@@ -3,7 +3,7 @@ package com.kreitek.files;
 
 public abstract class FileSystemItemBase {
     private static final String PATH_SEPARATOR = "/";
-    protected String name;
+    private String name;
     private String path = PATH_SEPARATOR;
     private Directory directoryParent;
 
@@ -13,7 +13,7 @@ public abstract class FileSystemItemBase {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public FileSystemItemBase getParent() {
