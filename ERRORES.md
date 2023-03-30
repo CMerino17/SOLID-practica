@@ -7,9 +7,9 @@
 **Principio de Responsabilidad Única**
 
   El código incumplía este principio debido a que varias clases implementaban métodos
-  que desde mi punto de vista no se correspondian con la función del método.
+  que desde mi punto de vista no se correspondian con la función de la clase.
   Para solucionarlo he creado otras clases como por ejemplo FileReader o FileConverter
-  que implementan los métodos necesarios.
+  que implementan los métodos necesarios en estas clases y los he quitado de otras clases.
   
 **Principio de Segregación de Interfaces**
 
