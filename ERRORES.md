@@ -5,12 +5,14 @@
   He detectado en el código que no se cumplen los siguientes principios:
 
 **Principio de Responsabilidad Única**
+
   El código incumplía este principio debido a que varias clases implementaban métodos
   que desde mi punto de vista no se correspondian con la función del método.
   Para solucionarlo he creado otras clases como por ejemplo FileReader o FileConverter
   que implementan los métodos necesarios.
   
 **Principio de Segregación de Interfaces**
+
   El código incumplía este principio ya que la clase abstracta implementaba una interfaz
   con muchos métodos, los cuales desde mi punto de vista no deberian estar todos en la 
   clase abstracta.
@@ -19,6 +21,7 @@
   Esto está muy relacionado con el principio de responsabilidad única.
   
 **Principio de Inversión de Dependencias**
+
   Posiblemente esté equivocado con este principio porque me genera dudas.
   Desde mi punto de vista se incumple este principio debido a que el código tenía una
   clase abstracta que implementaba una interfaz, y las clases "hijas" de esta clase
