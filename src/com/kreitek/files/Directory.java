@@ -2,71 +2,37 @@ package com.kreitek.files;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.kreitek.service.FileManager;
+import com.kreitek.interfaces.IDirectory;
 
-public class Directory extends FileSystemItemBase implements FileSystemItem {
 
-    private static final String NO_ES_VALIDO_PARA_DIRECTORIOS = "No es válido para directorios";
-    private final List<FileSystemItem> files;
-    private int size = 0;
+public class Directory extends FileSystemItemBase implements IDirectory {
 
-    public Directory(FileSystemItem parent, String name) {
-        super(parent, name);
+    private final List<FileSystemItemBase> files;
+
+    public Directory(String name) {
+        super(name);
         files = new ArrayList<>();
-        // Aquí vendría lógica que rellena la lista de ficheros
     }
 
-    @Override
-    public String getExtension() {
-        throw new UnsupportedOperationException(NO_ES_VALIDO_PARA_DIRECTORIOS);
-    }
-
-    @Override
-    public List<FileSystemItem> listFiles() {
+    public List<FileSystemItemBase> listFiles() {
         return files;
     }
 
     @Override
-    public void addFile(FileSystemItem file) {
-        if (!files.contains(file)) {
-            files.add(file);
+    public void addFile(FileSystemItemBase file) {
+        if (!listFiles().contains(file)) {
+            listFiles().add(file);
             file.setParent(this);
         }
     }
 
     @Override
-    public void removeFile(FileSystemItem file) {
-        files.remove(file);
-    }
-
-    @Override
     public int getSize() {
-        this.size = FileManager.calculateSize(files);
-        return this.size;
+        int totalSize = 0;
+        for (FileSystemItemBase file : listFiles()) {
+            totalSize += file.getSize();
+        }
+        return totalSize;
     }
 
-    @Override
-    public void open() {
-        throw new UnsupportedOperationException(NO_ES_VALIDO_PARA_DIRECTORIOS);
-    }
-
-    @Override
-    public void setPosition(int numberOfBytesFromBeginning) {
-        throw new UnsupportedOperationException(NO_ES_VALIDO_PARA_DIRECTORIOS);
-    }
-
-    @Override
-    public byte[] read(int numberOfBytesToRead) {
-        throw new UnsupportedOperationException(NO_ES_VALIDO_PARA_DIRECTORIOS);
-    }
-
-    @Override
-    public void write(byte[] buffer) {
-        throw new UnsupportedOperationException(NO_ES_VALIDO_PARA_DIRECTORIOS);
-
-    }
-
-    public void close() {
-        throw new UnsupportedOperationException(NO_ES_VALIDO_PARA_DIRECTORIOS);
-    }
 }
